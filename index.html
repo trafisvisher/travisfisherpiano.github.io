@@ -182,7 +182,7 @@ async function buildCompositions(){
     const c=document.createElement('div');c.className='composition';c.innerHTML=`<div>${t}</div><div class=controls></div>`;
     const ctr=c.querySelector('.controls');
     const p=document.createElement('button');p.className='play';p.dataset.key=t;p.innerHTML=`<svg viewBox='0 0 24 24'><polygon class='triangle' points='6,4 20,12 6,20'/></svg>`;
-    p.onclick=()=>togglePlay(p,`${t}.mp3`,t);ctr.appendChild(p);
+    p.onclick=()=>togglePlay(p,`songs/${t}.mp3`,t);ctr.appendChild(p);
     try{const r=await fetch(`scores/${t}.pdf`,{method:'HEAD'});if(r.ok){const s=document.createElement('button');s.className='score-btn';s.textContent='score';s.onclick=()=>openScore(t);ctr.appendChild(s)}}catch(e){}
     list.appendChild(c)
   })
