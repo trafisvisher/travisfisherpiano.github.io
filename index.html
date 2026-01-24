@@ -223,23 +223,54 @@ section{
 }
 
 /* about */
-#about{overflow:hidden}
-.about-wrap{position:relative;min-height:100vh;display:flex;align-items:center}
-.about-track{
-  position:absolute;inset:0;
-  width:2000%;height:100vh;
-  background:url('images/about-background.jpg') left center/cover no-repeat;
-  animation:aboutPan 20s linear infinite;
-  opacity:.6;
+#about{
+  overflow:hidden;
 }
+
+.about-wrap{
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end; /* pushes content toward bottom */
+  justify-content: flex-start; /* stays left aligned */
+  padding-bottom: 100px; /* optional extra spacing from bottom */
+}
+
+.about-track{
+  position:absolute;
+  inset:0;
+  height:100vh;
+
+  background-image: url('images/about-background.jpg');
+  background-repeat: repeat-x;
+  background-position: 0 center;
+
+  /* This is the magic combo */
+  background-size: auto 100%; /* ← tune height here */
+
+  animation: aboutPan 15s linear infinite;
+  opacity: .6;
+  will-change: background-position;
+}
+
 @keyframes aboutPan{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+  from{
+    background-position-x: 0;
+  }
+  to{
+    background-position-x: 100%;
+  }
 }
 .about-text{
   position:relative;z-index:2;
   max-width:500px;
-  padding:180px 24px 0;
+  padding: 0 24px 0;
+}
+
+.about-text p:last-child {
+  margin-top: 60px;
+  font-size: 0.85em;
+  color: #fff;
 }
 
 /* simple lists */
@@ -263,13 +294,7 @@ section{
     height:5px;
   }
 
-  .about-track{
-  position:absolute;inset:0;
-  width:500%;height:100vh;
-  background:url('images/about-background.jpg') left center/cover no-repeat;
-  animation:aboutPan 30s linear infinite;
-  opacity:.6;
-}
+
 }
 
 </style>
@@ -320,9 +345,19 @@ section{
       the chromatic scale (beginner exercise)
     </a>
   </div>
+  <div>
+    <a class="pdf-link" href="scores/lessons/visualizing-the-grand-staff.pdf" target="_blank">
+      visualizing the grand staff
+    </a>
+  </div>
    <div>
     <a class="pdf-link" href="scores/lessons/learning-the-circle-of-fifths-beginner.pdf" target="_blank">
       learning the circle of fifths
+    </a>
+  </div>
+  <div>
+    <a class="pdf-link" href="scores/lessons/ii-V-i-voicing.pdf" target="_blank">
+      ii-V-i voicing
     </a>
   </div>
   <div>
@@ -413,9 +448,13 @@ section{
     <div class="about-text">
       <p>travis grew up in the high desert of california</p>
       <p>he studied classical piano in los angeles, jazz piano in seattle, and is based now in telluride, colorado</p>
+      <p></p>
+      <p></p>
+      <p>hello@travisfishermusic.com</p>
     </div>
-    <div class="about-track"></div>
-  </div>
+<div class="about-track">
+
+</div>
 </div>
 
 <!-- SCORE -->
